@@ -24,7 +24,7 @@
         <Button Grid.Column="1" Click="ShowList">
             <TextBlock x:Name="TextBlockShow" Text="Show List"></TextBlock>
         </Button>
-        <Border x:Name="BorderBox" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" BorderBrush="DarkOrange"  BorderThickness="5">
+        <Border x:Name="BorderBox" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,300" BorderBrush="DarkOrange"  BorderThickness="5">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>

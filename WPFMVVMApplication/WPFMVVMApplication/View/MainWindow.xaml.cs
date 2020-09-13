@@ -31,28 +31,22 @@ namespace WPFMVVMApplication
             InitializeComponent();
         }
 
+        private double SetShowList(double margin, string buttonText)
+        {
+            TextBlockShow.Text = buttonText;
+            listOpened = !listOpened;
+            return margin;
+        } 
 
         private void ShowList(object sender, RoutedEventArgs e)
         {
-            double FromBottom = 0;
-            double ToBottom = 0;
-            if (listOpened)
-            {
-                TextBlockShow.Text = "Show List";
-                FromBottom = 300;
-            }
-            else
-            {
-                TextBlockShow.Text = "Hide List";
-                ToBottom = 300;
-            }
-            listOpened = !listOpened;
+            double margin = listOpened ? SetShowList(-150.0, "Show List") : SetShowList(150, "Hide List");
 
             ThicknessAnimation ta = new ThicknessAnimation();
             Storyboard sb= new Storyboard();
             EasingFunctionBase efb = new PowerEase() { Power = 8 };
-            ta.From = new Thickness(0, 0, 0, FromBottom);
-            ta.To = new Thickness(0, 0, 0, ToBottom);
+            ta.From = new Thickness(0, 0, 0, 150 + margin);
+            ta.To = new Thickness(0, 0, 0, 150 - margin);
             ta.Duration = new Duration(TimeSpan.FromSeconds(2));
             ta.EasingFunction = efb;
 
