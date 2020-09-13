@@ -17,20 +17,29 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="4*"></RowDefinition>
+            <RowDefinition x:Name="ShowRow" Height="4*"></RowDefinition>
         </Grid.RowDefinitions>
         <Button Grid.Row="0" Content="Clear List" Command="{Binding ClearList}">
         </Button>
-        <Button Grid.Column="1" Content="Show List">
+        <Button Grid.Column="1" Click="ShowList">
+            <TextBlock x:Name="TextBlockShow" Text="Show List"></TextBlock>
         </Button>
-        <StackPanel Grid.Row="1" Grid.Column="1">
-            <Button Content="Add Text" Command="{Binding AddText}"></Button>
-            <TextBox x:Name="TB1" Text="{Binding Text, Mode=OneWayToSource}"></TextBox>
-        </StackPanel>
-        <DataGrid Grid.Row="1" ItemsSource="{Binding BitElements}" AutoGenerateColumns="False">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Text List" Binding="{Binding Path=Text}"></DataGridTextColumn>
-            </DataGrid.Columns>
-        </DataGrid>
+        <Border x:Name="BorderBox" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" BorderBrush="DarkOrange"  BorderThickness="5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Row="1" Grid.Column="1">
+                    <Button Content="Add Text" Command="{Binding AddText}"></Button>
+                    <TextBox x:Name="TB1" Text="{Binding Text, Mode=OneWayToSource}"></TextBox>
+                </StackPanel>
+                <DataGrid Grid.Row="1" ItemsSource="{Binding BitElements}" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Text List" Binding="{Binding Path=Text}" Width="1*"></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Border>
     </Grid>
 </Window>
